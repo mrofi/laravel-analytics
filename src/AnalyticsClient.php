@@ -14,7 +14,7 @@ class AnalyticsClient
     /** @var \Illuminate\Contracts\Cache\Repository */
     protected $cache;
 
-    /** @var int */
+    /** @var */
     protected $cacheLifeTimeInMinutes = 0;
 
     public function __construct(Google_Service_Analytics $service, Repository $cache)
@@ -27,11 +27,11 @@ class AnalyticsClient
     /**
      * Set the cache time.
      *
-     * @param int $cacheLifeTimeInMinutes
+     * @param $cacheLifeTimeInMinutes
      *
      * @return self
      */
-    public function setCacheLifeTimeInMinutes(int $cacheLifeTimeInMinutes)
+    public function setCacheLifeTimeInMinutes($cacheLifeTimeInMinutes)
     {
         $this->cacheLifeTimeInMinutes = $cacheLifeTimeInMinutes;
 
@@ -41,15 +41,15 @@ class AnalyticsClient
     /**
      * Query the Google Analytics Service with given parameters.
      *
-     * @param string    $viewId
+     * @param    $viewId
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param string    $metrics
+     * @param    $metrics
      * @param array     $others
      *
      * @return array|null
      */
-    public function performQuery(string $viewId, DateTime $startDate, DateTime $endDate, string $metrics, array $others = [])
+    public function performQuery($viewId, DateTime $startDate, DateTime $endDate, $metrics, array $others = [])
     {
         $cacheName = $this->determineCacheName(func_get_args());
 
